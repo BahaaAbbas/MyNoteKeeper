@@ -1,0 +1,81 @@
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.headerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.iconContainer {
+  padding: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(109, 129, 221);
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.searchSection {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.searchContainer {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.addNoteSection {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.addCard {
+  width: 100%;
+  max-width: 600px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addCard:hover {
+  transform: translateY(-2px);
+}
+
+.addContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #666;
+}

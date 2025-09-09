@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
-import Note from "./components/note/Note";
+import Note from "./pages/Note";
 
 function App() {
   return (
