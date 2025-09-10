@@ -1,0 +1,110 @@
+import { Add, Close } from "@mui/icons-material";
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+  Box,
+} from "@mui/material";
+import React, { useState } from "react";
+import styles from "../styles/AddNoteForm.module.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const AddNoteForm = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const handleCancel = () => {
+    setIsExpanded(false);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Saved successfully! ", {
+      position: "top-right",
+      autoClose: 2000,
+    });
+    setIsExpanded(false);
+  };
+
+  if (!isExpanded) {
+    return (
+      <Card
+        className={styles.addCard}
+        onClick={() => setIsExpanded(true)}
+        elevation={2}
+      >
+        <CardContent className={styles.addContent}>
+          <Add />
+          <Typography variant="body1">Add a new note...</Typography>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <Card className={styles.expandedCard} elevation={3}>
+      <CardContent>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <TextField
+            placeholder="Note title..."
+            variant="standard"
+            fullWidth
+            autoFocus
+            className={styles.titleInput}
+            InputProps={{
+              disableUnderline: true,
+              sx: {
+                fontSize: "1.1rem",
+                fontWeight: 500,
+                "&::placeholder": {
+                  color: "#666",
+                },
+              },
+            }}
+          />
+          <TextField
+            placeholder="Write your note here..."
+            variant="standard"
+            fullWidth
+            multiline
+            rows={4}
+            className={styles.contentTextarea}
+            InputProps={{
+              disableUnderline: true,
+              sx: {
+                "&::placeholder": {
+                  color: "#666",
+                },
+              },
+            }}
+          />
+          <Box className={styles.actions}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                "&:hover": {
+                  opacity: 0.9,
+                },
+              }}
+            >
+              Save Note
+            </Button>
+            <Button
+              type="button"
+              variant="text"
+              onClick={handleCancel}
+              startIcon={<Close />}
+              sx={{ color: "#666" }}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </form>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default AddNoteForm;
