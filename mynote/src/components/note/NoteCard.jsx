@@ -5,7 +5,7 @@ import { Delete } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const NoteCard = ({ note, onClick }) => {
+const NoteCard = ({ note, onClick, onDelete }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const formatDate = (date) =>
@@ -41,7 +41,8 @@ const NoteCard = ({ note, onClick }) => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                toast.error("Deleted successfully ", { autoClose: 2000 });
+                onDelete();
+
                 closeToast();
               }}
             >

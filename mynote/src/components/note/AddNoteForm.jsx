@@ -12,17 +12,31 @@ import styles from "../styles/AddNoteForm.module.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AddNoteForm = () => {
+const AddNoteForm = ({ onAddNote }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   const handleCancel = () => {
+    setTitle("");
+    setContent("");
     setIsExpanded(false);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast.success("Saved successfully! ", {
-      position: "top-right",
-      autoClose: 2000,
-    });
+    if (!title.trim() || !content.trim()) {
+      toast.error("Title and content cannot be empty!", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    onAddNote({ title, content });
+
+    setTitle("");
+    setContent("");
     setIsExpanded(false);
   };
 
@@ -50,6 +64,8 @@ const AddNoteForm = () => {
             variant="standard"
             fullWidth
             autoFocus
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             className={styles.titleInput}
             InputProps={{
               disableUnderline: true,
@@ -68,6 +84,8 @@ const AddNoteForm = () => {
             fullWidth
             multiline
             rows={4}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             className={styles.contentTextarea}
             InputProps={{
               disableUnderline: true,

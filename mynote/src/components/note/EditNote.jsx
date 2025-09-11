@@ -10,10 +10,8 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-const EditNote = ({ note, isOpen, onClose }) => {
+const EditNote = ({ note, isOpen, onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -32,12 +30,16 @@ const EditNote = ({ note, isOpen, onClose }) => {
     onClose();
   };
   const handleSave = () => {
-    toast.success("Saved successfully! ", {
-      position: "top-right",
-      autoClose: 2000,
-    });
-    onClose();
+    if (note && (title.trim() || content.trim())) {
+      onSave(note._id, {
+        title: title.trim() || "Untitled",
+        content: content.trim(),
+      });
+
+      onClose();
+    }
   };
+
   if (!note) return null;
 
   return (

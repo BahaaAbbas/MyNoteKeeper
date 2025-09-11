@@ -3,7 +3,7 @@ import styles from "../styles/SearchBar.module.css";
 import { Search } from "@mui/icons-material";
 import { TextField, InputAdornment, Box } from "@mui/material";
 
-const SearchBar = () => {
+const SearchBar = ({ value, onChange }) => {
   return (
     <Box className={styles.searchContainer}>
       <TextField
@@ -11,6 +11,8 @@ const SearchBar = () => {
         placeholder="Search notes..."
         variant="outlined"
         size="medium"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         className={styles.searchInput}
         InputProps={{
           startAdornment: (
