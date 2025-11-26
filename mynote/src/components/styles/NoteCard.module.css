@@ -1,0 +1,53 @@
+.noteCard {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.noteCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.textArea {
+  flex: 1;
+}
+
+.noteTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.noteContent {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.noteDate {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+/* Delete button only visible on hover */
+.deleteButton {
+  align-self: flex-end;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.noteCard:hover .deleteButton {
+  opacity: 1;
+}
